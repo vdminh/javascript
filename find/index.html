@@ -3,7 +3,21 @@
 <html lang="en">
 
 <head>
-
+	<script>
+	function loadDoc() {
+	var mabai = document.getElementById("mabai").value;
+	var xhttp = new XMLHttpRequest();	
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			document.getElementById("noidungdebai").src = xhttp.responseText;
+		}
+	};	
+	if (mabai!=null){
+		xhttp.open("get", "http://www.w3schools.com/ajax/ajax_info.txt", true);
+		xhttp.send();
+	}
+	}
+	</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,9 +76,9 @@
                 <p class="lead">Search here</p>
                 <div class="list-group">
 					<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search for...">
+					<input type="text" class="form-control" placeholder="Search for..." id="mabai">
 						<span class="input-group-btn">
-							<button class="btn btn-default" type="button" id="btnSearch">Go!</button>
+							<button class="btn btn-default" type="button" id="btnSearch" onclick="loadDoc()">Go!</button>
 						</span>
 					</div><!-- /input-group -->
                 </div>
